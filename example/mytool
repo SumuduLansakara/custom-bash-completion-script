@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+## Sample tool with following command-line argument scheme
+# + list
+#   + user
+#     + name
+#     + address
+#     + telephone-number
+# + remove
+#   + user
+
+case $1 in
+    list)
+        echo '> list'
+        case $2 in
+            user)
+                echo ' > user'
+                case $3 in
+                    name)
+                        echo '  > name' ${4}
+                        ;;
+                    address)
+                        echo '  > address' ${4}
+                        ;;
+                    telephone-number)
+                        echo '  > telephone-number' ${4}
+                        ;;
+                    *)
+                        echo "Invalid second argument ! [$2]"
+                        ;;
+                esac
+                ;;
+            *)
+                echo "Invalid second argument ! [$2]"
+                ;;
+        esac
+        ;;
+    remove)
+        echo '> remove'
+        case $2 in
+            user)
+                echo ' > user' ${3}
+                ;;
+        esac
+        ;;
+    *)
+        echo "Invalid first argument ! [$1]"
+esac
