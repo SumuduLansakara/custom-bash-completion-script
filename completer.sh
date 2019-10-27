@@ -1,8 +1,11 @@
 #/usr/bin/env bash
 
+# Custom argument scheme definition
 _opts=(arg1 arg2)
 arg1_opts=(arg11 arg12)
+arg2_opts=(arg21 arg22)
 
+# Generic section below
 function _gencomp()
 {
     ## all completion tokens
