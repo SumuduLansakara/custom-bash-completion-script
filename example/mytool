@@ -17,13 +17,13 @@ case $1 in
                 echo ' > user'
                 case $3 in
                     name)
-                        echo '  > name' ${4}
+                        echo '  > name' "${4}"
                         ;;
                     address)
-                        echo '  > address' ${4}
+                        echo '  > address' "${4}"
                         ;;
                     telephone-number)
-                        echo '  > telephone-number' ${4}
+                        echo '  > telephone-number' "${4}"
                         ;;
                     *)
                         echo "Invalid second argument ! [$2]"
@@ -39,7 +39,7 @@ case $1 in
         echo '> remove'
         case $2 in
             user)
-                echo ' > user' ${3}
+                echo ' > user' "${3}"
                 ;;
         esac
         ;;

@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 ## Command-line argument scheme definition
 ## (only this section needs to be customized to match the target tool)
@@ -20,13 +20,14 @@ remove_opts=(user)
 ##    remove_user_address_arg1_arg11_opts=(arg111)
 
 ## Generic section below
-function _gencomp()
-{
-    _path=("${COMP_WORDS[@]:1}")
-    [[ "${#COMP_WORDS[@]}" -gt 1 ]] && unset '_path[${#_path[@]}-1]'
-    IFS=_ 
-    _var="${_path[*]}_opts[*]"
-    unset IFS
-    COMPREPLY=($(compgen -W "${!_var}" "${COMP_WORDS[${COMP_CWORD}]}"))
+function _gencomp() {
+  _path=("${COMP_WORDS[@]:1}")
+  [[ "${#COMP_WORDS[@]}" -gt 1 ]] && unset '_path[${#_path[@]}-1]'
+  IFS=_
+  _var="${_path[*]}_opts[*]"
+  unset IFS
+  mapfile -t COMPREPLY < <(compgen -W "${!_var}" "${COMP_WORDS[${COMP_CWORD}]}")
 }
+
+# Auto-completions are generated for an executable named `mytool`
 complete -F _gencomp mytool
